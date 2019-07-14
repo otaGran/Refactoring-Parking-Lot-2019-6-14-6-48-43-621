@@ -19,9 +19,9 @@ public class SmartParkingBoyTest {
 
 
         //then
-        assertSame(parkingLotOne.getSize(),0);
-        assertSame(parkingLotTwo.getSize(),1);
-        assertSame(car, parkingLotOne.getCar(ticket));
+        assertSame(0,parkingLotOne.getSize());
+        assertSame(1, parkingLotTwo.getSize());
+        assertSame(car, parkingLotTwo.getCar(ticket));
 
 
     }

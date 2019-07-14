@@ -3,8 +3,8 @@ package com.thoughtworks.tdd;
 
 
 public class ParkingBoy {
-    private ParkingLot parkingLotOne;
-    private ParkingLot parkingLotTwo;
+    protected ParkingLot parkingLotOne;
+    protected ParkingLot parkingLotTwo;
     public ParkingBoy(ParkingLot parkingLotOne, ParkingLot parkingLotTwo){
         this.parkingLotOne = parkingLotOne;
         this.parkingLotTwo = parkingLotTwo;

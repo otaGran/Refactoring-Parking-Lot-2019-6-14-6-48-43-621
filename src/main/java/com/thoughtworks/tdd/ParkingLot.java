@@ -35,4 +35,9 @@ public class ParkingLot {
     public int getSize(){
         return parkingCarTicket.size();
     }
+
+    public int getEmptySize(){
+        return capacity - parkingCarTicket.size();
+    }
+
 }
