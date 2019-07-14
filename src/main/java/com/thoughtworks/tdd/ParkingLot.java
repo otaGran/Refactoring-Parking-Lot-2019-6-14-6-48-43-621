@@ -17,6 +17,9 @@ public class ParkingLot {
     }
 
     public Car getCar(Ticket ticket) throws Exception {
+
+        if(ticket == null)
+            throw new Exception("Please provide your parking ticket.");
         if(!parkingCarTicket.containsKey(ticket))
             throw new Exception("Unrecognized parking ticket.");
 
