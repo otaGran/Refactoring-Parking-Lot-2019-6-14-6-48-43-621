@@ -26,4 +26,26 @@ public class ParkingLotManagerTest {
 
 
     }
+
+    @Test
+    public void should_manager_add_parking_Lot_to_manage_list_and_park_or_fetch_as_stardand_parking_boy() throws Exception{
+//given
+        ParkingLot parkingLotOne = new ParkingLot(20);
+        ParkingLot parkingLotTwo = new ParkingLot(10);
+        //SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotOne,parkingLotTwo);
+        ParkingManager parkingManager = new ParkingManager(parkingLotOne,parkingLotTwo);
+        Car car = new Car();
+
+        //when
+        Ticket ticket = parkingManager.park(car);
+
+        Car fetchCar = parkingManager.fetch(ticket);
+
+
+        //then
+        assertSame(car, fetchCar);
+
+
+
+    }
 }
