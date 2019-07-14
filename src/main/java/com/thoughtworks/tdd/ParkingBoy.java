@@ -1,11 +1,11 @@
 package com.thoughtworks.tdd;
 
-import sun.security.krb5.internal.Ticket;
+
 
 public class ParkingBoy {
     private ParkingLot parkingLot;
     public ParkingBoy(ParkingLot parkingLot){
-        this.parkingLot = this.parkingLot;
+        this.parkingLot = parkingLot;
     }
 
     public Ticket park(Car car){
