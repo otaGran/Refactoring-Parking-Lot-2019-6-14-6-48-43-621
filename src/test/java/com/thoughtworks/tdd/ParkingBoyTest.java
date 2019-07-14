@@ -29,7 +29,7 @@ public class ParkingBoyTest {
 
     //AC1
     @Test
-    public void should_return_when_park_car_to_parking_lot_then_get_it_back() {
+    public void should_return_when_park_car_to_parking_lot_then_get_it_back() throws Exception{
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
@@ -38,6 +38,7 @@ public class ParkingBoyTest {
 
         //when
         Ticket ticket = parkingBoy.park(car);
+
         Car fetchCar = parkingBoy.fetch(ticket);
 
 
@@ -49,7 +50,7 @@ public class ParkingBoyTest {
 
     //AC2
     @Test
-    public void should_multiple_cars_when_park_to_parking_lot_then_get_them_back() {
+    public void should_multiple_cars_when_park_to_parking_lot_then_get_them_back() throws Exception{
         //given
 
         Car firstCar = new Car();
@@ -82,20 +83,19 @@ public class ParkingBoyTest {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        Ticket wrongTicket = new Ticket();
 
 
         //when
-        Ticket ticket = parkingBoy.park(car);
-        Car fetchCar = parkingBoy.fetch(wrongTicket);
-        parkingBoy.park(car);
+
+        Ticket wrongTicket = new Ticket();
+
 
         //then
 
 //        final Exception exception = Assertions.assertThrows(Exception.class);
-//        Assertions.assertThrows(Exception.class, () -> {
-//            parkingBoy.fetch(wrongTicket);
-//        });
+        Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.fetch(wrongTicket);
+        });
     }
 
 

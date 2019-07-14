@@ -14,7 +14,9 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car getCar(Ticket ticket) {
+    public Car getCar(Ticket ticket) throws Exception {
+        if(!parkingCarTicket.containsKey(ticket))
+            throw new Exception("Wrong Ticket");
         return parkingCarTicket.get(ticket);
     }
 }
