@@ -186,6 +186,27 @@ public class ParkingBoyTest {
 
     }
 
+    //Story-2_AC2
+    @Test
+    public void should_return_Unrecognized_parking_ticket_when_customers_gives_parking_boy_no_ticket() throws Exception{
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+
+        //when
+
+        Ticket emptyTicket = null;
+
+        //then
+        Throwable exception  = Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.fetch(emptyTicket);
+        });
+        assertEquals("Please provide your parking ticket.",exception.getMessage());
+
+    }
+
 
 
 
