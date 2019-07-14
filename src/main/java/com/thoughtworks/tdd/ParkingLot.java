@@ -18,7 +18,7 @@ public class ParkingLot {
 
     public Car getCar(Ticket ticket) throws Exception {
         if(!parkingCarTicket.containsKey(ticket))
-            throw new Exception("Wrong Ticket");
+            throw new Exception("Unrecognized parking ticket.");
 
         return parkingCarTicket.remove(ticket);
     }
