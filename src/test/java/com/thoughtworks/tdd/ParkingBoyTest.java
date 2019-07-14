@@ -138,6 +138,33 @@ public class ParkingBoyTest {
         });
     }
 
+    //AC5
+    @Test
+    public void should_not_park_car_when_parkingLot_is_full() throws Exception{
+        //given
+
+
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for(int i = 0;i<10;i++){
+            parkingBoy.park(new Car());
+        }
+
+
+        //when
+        for(int i = 0;i<10;i++){
+            parkingBoy.park(new Car());
+        }
+
+        //then
+        Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.park(new Car());
+        });
+
+
+    }
+
+
 
 
 
