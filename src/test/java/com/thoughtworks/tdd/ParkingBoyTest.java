@@ -27,6 +27,25 @@ public class ParkingBoyTest {
 
     }
 
+    //AC1
+    @Test
+    public void should_return_when_park_car_to_parking_lot_then_get_it_back() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+
+        //when
+        Ticket ticket = parkingBoy.park(car);
+        Car fetchCar = parkingBoy.fetch(ticket);
+
+
+        //then
+        assertSame(car, fetchCar);
+
+    }
+
     //AC3
     @Test
     public void should_not_featch_car_when_ticket_is_wrong() {
@@ -52,24 +71,7 @@ public class ParkingBoyTest {
 
 
 
-    //AC1
-    @Test
-    public void should_return_when_park_car_to_parking_lot_then_get_it_back() {
-        //given
-        Car car = new Car();
-        ParkingLot parkingLot = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 
-
-        //when
-        Ticket ticket = parkingBoy.park(car);
-        Car fetchCar = parkingBoy.fetch(ticket);
-
-
-        //then
-        assertSame(car, fetchCar);
-
-    }
 
 
 
