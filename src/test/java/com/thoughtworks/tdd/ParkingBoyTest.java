@@ -188,7 +188,7 @@ public class ParkingBoyTest {
 
     //Story-2_AC2
     @Test
-    public void should_return_Unrecognized_parking_ticket_when_customers_gives_parking_boy_no_ticket() throws Exception{
+    public void should_return_Please_provide_your_parking_ticket_when_customers_gives_parking_boy_no_ticket() throws Exception{
         //given
         ParkingLot parkingLot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
@@ -204,6 +204,29 @@ public class ParkingBoyTest {
             parkingBoy.fetch(emptyTicket);
         });
         assertEquals("Please provide your parking ticket.",exception.getMessage());
+
+    }
+
+
+
+    //Story-2_AC3
+    @Test
+    public void should_return_Not_enough_position_when_ParkingLot_is_full() throws Exception{
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        for(int i = 0;i<10;i++){
+            parkingBoy.park(new Car());
+        }
+
+
+        //then
+        Throwable exception  = Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.park(new Car());
+        });
+        assertEquals("Not enough position.",exception.getMessage());
 
     }
 
