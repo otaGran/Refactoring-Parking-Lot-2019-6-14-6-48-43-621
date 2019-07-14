@@ -20,7 +20,10 @@ public class ParkingBoy {
         try{
             return parkingLotOne.park(car);
         }catch(Exception E){
-            return parkingLotTwo.park(car);
+            if(parkingLotTwo == null)
+                throw E;
+            else
+                return parkingLotTwo.park(car);
         }
 
     }
@@ -29,6 +32,9 @@ public class ParkingBoy {
         try {
             return parkingLotOne.getCar(ticket);
         }catch(Exception E){
+            if(parkingLotTwo == null)
+                throw E;
+            else
             return parkingLotTwo.getCar(ticket);
         }
     }
