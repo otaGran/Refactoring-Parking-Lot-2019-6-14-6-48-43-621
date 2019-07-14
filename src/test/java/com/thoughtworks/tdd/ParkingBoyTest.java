@@ -98,6 +98,27 @@ public class ParkingBoyTest {
         });
     }
 
+    //AC3
+    @Test
+    public void should_not_featch_car_when_ticket_is_null() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+
+        //when
+
+        Ticket wrongTicket = null;
+
+
+        //then
+
+//        final Exception exception = Assertions.assertThrows(Exception.class);
+        Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.fetch(wrongTicket);
+        });
+    }
 
 
 
