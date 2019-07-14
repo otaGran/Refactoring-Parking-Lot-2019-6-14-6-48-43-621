@@ -2,7 +2,11 @@ package com.thoughtworks.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertSame;
+
 
 public class ParkingLotManagerTest {
     @Test
@@ -44,6 +48,32 @@ public class ParkingLotManagerTest {
 
         //then
         assertSame(car, fetchCar);
+
+
+
+    }
+
+    @Test
+    public void should_manager_display_error_message_to_customer_when_parking_boy_failed() throws Exception{
+//given
+        ParkingLot parkingLotOne = new ParkingLot(20);
+        ParkingLot parkingLotTwo = new ParkingLot(10);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotOne,parkingLotTwo);
+        ParkingManager parkingManager = new ParkingManager(superSmartParkingBoy);
+        Car car = new Car();
+
+        //when
+
+        for(int i = 0;i<31;i++){
+            superSmartParkingBoy.park(new Car());
+        }
+        PrintStream console = System.out;          // 声明（为null）：输出流 (字符设备) console
+        ByteArrayOutputStream bytes =  new ByteArrayOutputStream();   ;
+        System.setOut(new PrintStream(bytes));  // 将原本输出到控制台Console的字符流 重定向 到 bytes// 声明（为null）：bytes 用于缓存console 重定向过来的字符流
+
+        //then
+        ;
+        assertSame("Unrecognized parking ticket.", bytes.toString());
 
 
 
