@@ -120,6 +120,24 @@ public class ParkingBoyTest {
         });
     }
 
+    //AC4
+    @Test
+    public void should_not_fetch_car_when_ticket_is_already_used() throws Exception{
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+
+        //when
+        Ticket ticket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetch(ticket);
+
+        //then
+        Assertions.assertThrows(Exception.class, () -> {
+            parkingBoy.fetch(ticket);
+        });
+    }
+
 
 
 
