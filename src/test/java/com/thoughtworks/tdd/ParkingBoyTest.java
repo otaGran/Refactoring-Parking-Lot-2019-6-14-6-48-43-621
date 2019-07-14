@@ -230,6 +230,31 @@ public class ParkingBoyTest {
 
     }
 
+    //Story-3_AC1
+    @Test
+    public void should_park_car_to_parkingLot_2_when_ParkingLot_1_is_full() throws Exception{
+        //given
+        ParkingLot parkingLotOne = new ParkingLot();
+        ParkingLot parkingLotTwo = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotOne,parkingLotTwo);
+        Car car = new Car();
+
+        //when
+        for(int i = 0;i<10;i++){
+            parkingBoy.park(new Car());
+        }
+
+        Ticket ticket = parkingBoy.park(car);
+
+
+        //then
+        assertSame(parkingLotOne.getSize(),10);
+        assertSame(parkingLotTwo.getSize(),1);
+        assertSame(car, parkingLotTwo.getCar(ticket));
+
+
+    }
+
 
 
 
