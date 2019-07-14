@@ -5,8 +5,14 @@ package com.thoughtworks.tdd;
 import java.util.HashMap;
 
 public class ParkingLot {
-    final private int CAPACITY = 10;
+     private int capacity;
     private HashMap<Ticket, Car> parkingCarTicket = new HashMap<>();
+    public ParkingLot() {
+        this.capacity = 10;
+    }
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
 
     public Ticket park(Car car) throws Exception{
         if(parkingCarTicket.size() >= 10)

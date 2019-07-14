@@ -8,7 +8,7 @@ public class SmartParkingBoyTest {
     @Test
     public void should_park_car_to_the_parkingLot_with_more_empty_positions() throws Exception{
 //given
-        ParkingLot parkingLotOne = new ParkingLot(100);
+        ParkingLot parkingLotOne = new ParkingLot(9);
         ParkingLot parkingLotTwo = new ParkingLot(10);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotOne,parkingLotTwo);
         Car car = new Car();
@@ -19,8 +19,8 @@ public class SmartParkingBoyTest {
 
 
         //then
-        assertSame(parkingLotOne.getSize(),1);
-        assertSame(parkingLotTwo.getSize(),0);
+        assertSame(parkingLotOne.getSize(),0);
+        assertSame(parkingLotTwo.getSize(),1);
         assertSame(car, parkingLotOne.getCar(ticket));
 
 
