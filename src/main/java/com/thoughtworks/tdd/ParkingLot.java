@@ -40,4 +40,8 @@ public class ParkingLot {
         return capacity - parkingCarTicket.size();
     }
 
+    public double getAvailablePositionsRate(){
+        return (double)(capacity - parkingCarTicket.size())/(double)capacity;
+    }
+
 }
