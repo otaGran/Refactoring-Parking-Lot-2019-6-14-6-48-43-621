@@ -18,6 +18,6 @@ public class ParkingLot {
         if(!parkingCarTicket.containsKey(ticket))
             throw new Exception("Wrong Ticket");
 
-        return parkingCarTicket.get(ticket);
+        return parkingCarTicket.remove(ticket);
     }
 }
