@@ -3,16 +3,33 @@ package com.thoughtworks.tdd;
 
 
 public class ParkingBoy {
-    private ParkingLot parkingLot;
-    public ParkingBoy(ParkingLot parkingLot){
-        this.parkingLot = parkingLot;
+    private ParkingLot parkingLotOne;
+    private ParkingLot parkingLotTwo;
+    public ParkingBoy(ParkingLot parkingLotOne, ParkingLot parkingLotTwo){
+        this.parkingLotOne = parkingLotOne;
+        this.parkingLotTwo = parkingLotTwo;
+
+    }
+    public ParkingBoy(ParkingLot parkingLotOne){
+        this.parkingLotOne = parkingLotOne;
+
+
     }
 
     public Ticket park(Car car) throws Exception{
-        return parkingLot.park(car);
+        try{
+            return parkingLotOne.park(car);
+        }catch(Exception E){
+            return parkingLotTwo.park(car);
+        }
+
     }
 
     public Car fetch(Ticket ticket) throws Exception{
-        return parkingLot.getCar(ticket);
+        try {
+            return parkingLotOne.getCar(ticket);
+        }catch(Exception E){
+            return parkingLotTwo.getCar(ticket);
+        }
     }
 }

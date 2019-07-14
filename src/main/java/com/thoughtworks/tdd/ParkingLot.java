@@ -25,4 +25,8 @@ public class ParkingLot {
 
         return parkingCarTicket.remove(ticket);
     }
+
+    public int getSize(){
+        return parkingCarTicket.size();
+    }
 }
