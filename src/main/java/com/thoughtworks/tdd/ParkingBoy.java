@@ -1,17 +1,13 @@
 package com.thoughtworks.tdd;
 
 
+import java.util.Collections;
+import java.util.List;
 
 public class ParkingBoy {
-    protected ParkingLot parkingLotOne;
-    protected ParkingLot parkingLotTwo;
-    public ParkingBoy(ParkingLot parkingLotOne, ParkingLot parkingLotTwo){
-        this.parkingLotOne = parkingLotOne;
-        this.parkingLotTwo = parkingLotTwo;
-
-    }
-    public ParkingBoy(ParkingLot parkingLotOne){
-        this.parkingLotOne = parkingLotOne;
+    protected List<ParkingLot> parkingLots;
+    public ParkingBoy(ParkingLot... parkingLots){
+        Collections.addAll(this.parkingLots, parkingLots);
 
 
     }
