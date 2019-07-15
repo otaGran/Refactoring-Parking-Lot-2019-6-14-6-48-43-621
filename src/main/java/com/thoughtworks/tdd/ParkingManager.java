@@ -1,29 +1,44 @@
 package com.thoughtworks.tdd;
 
 public class ParkingManager {
-    private ParkingBoy parkingBoy;
     protected ParkingLot parkingLotOne;
     protected ParkingLot parkingLotTwo;
-    public ParkingManager(ParkingLot parkingLotOne, ParkingLot parkingLotTwo){
+    private ParkingBoy parkingBoy;
+
+    public ParkingManager(ParkingLot parkingLotOne, ParkingLot parkingLotTwo) {
         this.parkingLotOne = parkingLotOne;
         this.parkingLotTwo = parkingLotTwo;
 
     }
+
     public ParkingManager(ParkingBoy parkingBoy) {
         this.parkingBoy = parkingBoy;
     }
 
-    public Ticket park(Car car) throws Exception{
-        if(parkingBoy == null){
+    public Ticket park(Car car) throws Exception {
+        if (parkingBoy == null) {
             return parkingLotOne.park(car);
         }
-        return parkingBoy.park(car);
+        try {
+            Ticket ticket=  parkingBoy.park(car);
+            return ticket;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
-    public Car fetch(Ticket ticket) throws Exception{
-        if(parkingBoy == null){
+    public Car fetch(Ticket ticket) throws Exception {
+        if (parkingBoy == null) {
             return parkingLotOne.getCar(ticket);
         }
-        return parkingBoy.fetch(ticket);
+        try {
+
+            Car car = parkingBoy.fetch(ticket);
+            return car;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

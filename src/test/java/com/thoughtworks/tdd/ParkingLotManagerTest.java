@@ -65,15 +65,17 @@ public class ParkingLotManagerTest {
         //when
 
         for(int i = 0;i<31;i++){
-            superSmartParkingBoy.park(new Car());
+            parkingManager.park(new Car());
         }
         PrintStream console = System.out;          // 声明（为null）：输出流 (字符设备) console
-        ByteArrayOutputStream bytes =  new ByteArrayOutputStream();   ;
+        ByteArrayOutputStream bytes =  new ByteArrayOutputStream();
+        console = System.out;
         System.setOut(new PrintStream(bytes));  // 将原本输出到控制台Console的字符流 重定向 到 bytes// 声明（为null）：bytes 用于缓存console 重定向过来的字符流
+        console = System.out;
 
         //then
         ;
-        assertSame("Unrecognized parking ticket.", bytes.toString());
+        assertSame("Not enough position.", bytes.toString());
 
 
 
