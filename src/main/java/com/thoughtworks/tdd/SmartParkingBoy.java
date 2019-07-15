@@ -1,9 +1,5 @@
 package com.thoughtworks.tdd;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class SmartParkingBoy extends ParkingBoy {
     public SmartParkingBoy(ParkingLot parkingLotOne, ParkingLot parkingLotTwo) {
         super(parkingLotOne, parkingLotTwo);
@@ -16,7 +12,7 @@ public class SmartParkingBoy extends ParkingBoy {
     @Override
     public Ticket park(Car car) throws Exception {
 
-        if (parkingLotOne.getEmptySize() >= parkingLotTwo.getEmptySize()) {
+        if (parkingLotOne.getAvailableSize() >= parkingLotTwo.getAvailableSize()) {
             try {
                 return parkingLotOne.park(car);
             } catch (Exception E) {
