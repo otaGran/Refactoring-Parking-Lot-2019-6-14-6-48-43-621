@@ -12,15 +12,16 @@ public class SuperSmartParkingBoy extends SmartParkingBoy {
 
     @Override
     public Ticket park(Car car) throws Exception {
-        if (parkingLotOne.getAvailablePositionsRate() >= parkingLotTwo.getAvailablePositionsRate()) {
-            //System.out.println("1 "+parkingLotOne.getAvailablePositionsRate());
-            return parkingLotOne.park(car);
-        }
-        else{
-            //System.out.println("2 "+parkingLotTwo.getAvailablePositionsRate());
-            return parkingLotTwo.park(car);
 
-
+        ParkingLot parkingLotWithMaxAvailableRate = null;
+        double maxAvailableRate = 0;
+        for (ParkingLot parkingLot : parkingLots){
+            if(parkingLot.getAvailablePositionsRate() > maxAvailableRate){
+                maxAvailableRate = parkingLot.getAvailablePositionsRate();
+                parkingLotWithMaxAvailableRate = parkingLot;
+            }
         }
+
+        return parkingLotWithMaxAvailableRate.park(car);
     }
 }

@@ -1,40 +1,24 @@
 package com.thoughtworks.tdd;
 
 public class SmartParkingBoy extends ParkingBoy {
-    public SmartParkingBoy(ParkingLot parkingLotOne, ParkingLot parkingLotTwo) {
-        super(parkingLotOne, parkingLotTwo);
-    }
-
-    public SmartParkingBoy(ParkingLot parkingLotOne) {
-        super(parkingLotOne);
+    public SmartParkingBoy(ParkingLot... parkingLots) {
+        super(parkingLots);
     }
 
     @Override
     public Ticket park(Car car) throws Exception {
 
-        if (parkingLotOne.getAvailableSize() >= parkingLotTwo.getAvailableSize()) {
-            try {
-                return parkingLotOne.park(car);
-            } catch (Exception E) {
-                if (parkingLotTwo == null)
-                    throw E;
-                else
-                    return parkingLotTwo.park(car);
+        ParkingLot parkingLotWithMaxAvailableSize = null;
+        int maxAvailableSize = 0;
+        for (ParkingLot parkingLot : parkingLots){
+            if(parkingLot.getAvailableSize() > maxAvailableSize){
+                maxAvailableSize = parkingLot.getAvailableSize();
+                parkingLotWithMaxAvailableSize = parkingLot;
             }
         }
-        else{
-            try {
-                return parkingLotTwo.park(car);
-            } catch (Exception E) {
-                if (parkingLotOne == null)
-                    throw E;
-                else
-                    return parkingLotOne.park(car);
-            }
 
-        }
+            return parkingLotWithMaxAvailableSize.park(car);
     }
-
 
 
 }
